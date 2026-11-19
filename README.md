@@ -37,10 +37,10 @@ Nmap reconnaissance includes host discovery, SYN and full-port scans, service de
 
 ```bash
 nmap -sn 192.168.56.0/24
-sudo nmap -sS -T4 192.168.56.20
-sudo nmap -sS -p- -T4 192.168.56.20
-nmap -sV -p22,80,443 192.168.56.20
-sudo nmap -sU --top-ports 50 192.168.56.20
+sudo nmap -sS -T4 192.168.x.x
+sudo nmap -sS -p- -T4 192.168.x.x
+nmap -sV -p22,80,443 192.168.x.x
+sudo nmap -sU --top-ports 50 192.168.x.x
 ```
 
 
@@ -48,7 +48,7 @@ Hydra generates failed SSH login events using a throwaway lab account:
 
 
 ```bash
-hydra -l labtest -P rockyou-sample.txt ssh://192.168.56.20 -t 4
+hydra -l labtest -P rockyou-sample.txt ssh://192.168.x.x -t 4
 ```
 
 
@@ -61,11 +61,11 @@ The simulations map to MITRE ATT&CK techniques T1046 for network service discove
 Five custom SPL detections analyze the generated telemetry:
 
 
-- **Port scanning — T1046:** Flags a source touching at least 15 destination ports within 60 seconds. Severity increases at 50 and 100 ports.
-- **SSH brute force — T1110.001:** Detects at least five failed logins for the same user and source within five minutes. A companion search flags a brute-force attempt followed by a successful login.
-- **Entra ID impossible travel — T1078.004:** Identifies a user signing in from geographically distant IPs within an implausibly short interval, using `iplocation` and `streamstats`.
-- **Risky Entra ID sign-in — T1110 / T1078:** Alerts on high-risk sign-ins or repeated Conditional Access denials in ten-minute windows.
-- **Correlated reconnaissance and brute force:** Joins scan and login activity from the same source within 30 minutes to highlight a higher-confidence sequence.
+**Port scanning — T1046:** Flags a source touching at least 15 destination ports within 60 seconds. Severity increases at 50 and 100 ports.
+**SSH brute force — T1110.001:** Detects at least five failed logins for the same user and source within five minutes. A companion search flags a brute-force attempt followed by a successful login.
+**Entra ID impossible travel — T1078.004:** Identifies a user signing in from geographically distant IPs within an implausibly short interval, using `iplocation` and `streamstats`.
+**Risky Entra ID sign-in — T1110 / T1078:** Alerts on high-risk sign-ins or repeated Conditional Access denials in ten-minute windows.
+**Correlated reconnaissance and brute force:** Joins scan and login activity from the same source within 30 minutes to highlight a higher-confidence sequence.
 
 
 ## Dashboard and response
