@@ -1,7 +1,7 @@
 # Enterprise Attack Detection Lab
 
 
-A home-lab SOC project for practicing detection engineering across cloud identity and network activity. The lab combines Microsoft Entra ID, Splunk Enterprise, Kali Linux, and an Ubuntu victim VM on an isolated host-only network.
+A homelab SOC project for practicing detection engineering across cloud identity and network activity. The lab combines Microsoft Entra ID, Splunk Enterprise, Kali Linux, and an Ubuntu victim VM on an isolated host-only network.
 
 
 ## Lab architecture
